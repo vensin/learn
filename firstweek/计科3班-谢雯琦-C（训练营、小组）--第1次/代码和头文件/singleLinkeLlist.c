@@ -5,7 +5,7 @@
 
 int main()
 {
-	int chioce=0,n=10,arr[10]={1,3,4,6,4,8,5,7,9,5},index=5,data=5;
+	int choice=0,n=10,arr[10]={1,3,4,6,4,8,5,7,9,5},index=5,data=5;
 	ptr_Node head,node=(ptr_Node)malloc(sizeof(Node));
 	node->data=10;
 	node->next=NULL;
@@ -13,10 +13,10 @@ int main()
 	printf("This is a linkedlist\n");
 	printf("what you wan to do?\n");
 	printf("1-生成  2-销毁  3-插入  4-删除  5-查找  6-修改  7-排序  8-输出链表\n");
-	printf("your chioce:");
-	scanf("%d",&chioce);
+	printf("your choice:");
+	scanf("%d",&choice);
 	system("cls");
-	switch(chioce)
+	switch(choice)
 	{
 	case 1:head=create(arr,n);
 	     break;
@@ -39,6 +39,6 @@ int main()
     printf("\n按任意键继续");
 	getch(); 
 	system("cls");
-    }while(chioce) ;
+    }while(choice) ;
 	return 0;
 }
