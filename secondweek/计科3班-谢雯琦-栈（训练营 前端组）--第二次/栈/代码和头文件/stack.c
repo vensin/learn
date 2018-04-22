@@ -2,7 +2,6 @@
 #include <malloc.h>
 #include <string.h>
 #include "stack.h"
-#include "calculate.h" 
 
 //顺序栈(基于数组的)
 Status initStack(SqStack *s,int sizes)  //初始化
@@ -97,9 +96,10 @@ Status popStack(SqStack *s,ElemType *datas)   //出栈
 //链栈(基于链表的)
 Status initLStack(LinkStack *s)   //初始化
 {
-    s->top=(LinkStackPtr)malloc(sizeof(StackNode));
-    s->top->next=NULL;
-    if(s->top!=NULL) return OK;
+    //s->top=(LinkStackPtr)malloc(sizeof(StackNode));
+    //s->top->next=NULL;
+    s->top=NULL;
+    if(s!=NULL) return OK;
     else return ERROR;
 }
 
@@ -107,10 +107,14 @@ Status isEmptyLStack(LinkStack *s)  //判断链表是否为空
 {
     if(s->top!=NULL)
     {
-    	printf("不为空。\n");
+    	printf("不为空\n");
     	return OK;
 	}
-    else return ERROR;
+    else 
+	{
+		printf("为空\n");
+		return ERROR;
+	}
 }
 
 Status getTopLStack(LinkStack *s,ElemType *e)  //得到链表头元素
@@ -179,12 +183,18 @@ Status pushLStack(LinkStack *s,ElemType datas)   //入栈
 	LinkStackPtr p;
 	int n;
 	LStackLength(s,&n);
+	system("CLS");
 	if(n<s->count)
 	{
 		p=(LinkStackPtr)malloc(sizeof(StackNode));
 		p->data=datas;
-		p->next=s->top;
-		s->top=p;
+		if(s->top==NULL)
+			s->top=p;
+		else{
+			p->next=s->top;
+		    s->top=p;
+		}
+		
 		return OK;
 	}
 	else return ERROR;
@@ -236,9 +246,14 @@ void main()
 				case 0:break; 
 				case 1:printf("%d",initStack(s,sizes));
 				       break;
-			    case 2: printf("%d",isEmptyStack(s));
+			    case 2:
+			    	    if(isEmptyStack(s))
+			    	    	printf("为空！\n");
+			    	    else
+			    	    	printf("不为空！\n");
 			           break;
-			    case 3:printf("%d",getTopStack(s,&e));
+			    case 3:printf("%d\n",getTopStack(s,&e));
+			    	   printf("头元素为：%d",e); 
 			           break;
 			    case 4:printf("%d",clearStack(s));
 			           break;
@@ -246,7 +261,9 @@ void main()
 			           break;
 			    case 6:printf("%d",stackLength(s,&length));
 			           break;
-			    case 7:printf("%d",pushStack(s,datas));
+			    case 7:printf("请输入一个整数：") ;
+					   scanf("%d",&datas); 
+					   printf("%d",pushStack(s,datas));
 			           break;
 			    case 8:printf("%d",popStack(s,&datas));
 			           break;
@@ -261,7 +278,8 @@ void main()
 				       break;
 			    case 2: printf("%d",isEmptyLStack(h));
 			           break;
-			    case 3:printf("%d",getTopLStack(h,&e));
+			    case 3:printf("%d\n",getTopLStack(h,&e));
+			    	   printf("头元素为：%d",e); 
 			           break;
 			    case 4:printf("%d",clearLStack(h));
 			           break;
@@ -269,7 +287,9 @@ void main()
 			           break;
 			    case 6:printf("%d",LStackLength(h,&length));
 			           break;
-			    case 7:printf("%d",pushLStack(h, datas));
+			    case 7:printf("请输入一个整数：") ;
+					   scanf("%d",&datas); 
+				       printf("%d",pushLStack(h, datas));
 			           break;
 			    case 8:printf("%d",popLStack(h,&datas));
 			           break;
