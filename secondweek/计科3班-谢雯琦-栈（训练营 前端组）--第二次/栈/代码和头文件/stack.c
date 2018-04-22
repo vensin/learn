@@ -216,15 +216,6 @@ void main()
       
 	   system("CLS");
 	   do{ 
-	   	if(n==3)
-		{
-			char str1[20];
-			printf("请输入一个少于20字符的表达式\n");
-			scanf("%s",str1);
-			sum=calculate(str1);
-			printf("结果为%d\n",sum);
-			break;
-		 } 
 	   	system("CLS");
 	    printf("0-返回\n");
 		printf("1-初始化\n");
