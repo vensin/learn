@@ -1,14 +1,14 @@
-var button=document.getElementById("button");
-button.onclick=function () {
+var odiv=document.getElementById("load");
+var ospan=odiv.getElementsByTagName("span");
+ospan[1].onclick=function () {
 	layer();
 }
 
 function layer()
 {
 	var bg=document.createElement("div");
-	bg.id="bg";
-	var load=document.createElement("div");
-	load.id="load";
+	bg.id="bg";	var layer=document.createElement("div");
+	layer.id="layer";
 	var word=document.createElement("h2");
 	var form=document.createElement("form");
 	var userName=document.createElement("input");
@@ -27,7 +27,7 @@ function layer()
 	password.type="password";
 	password.name="password";
 	password.placeholder="密码";
-	login.type="submit";
+	login.type="button";
 	login.value="登录";
 	login.id="login";
 	res.innerHTML="注册";
@@ -37,8 +37,8 @@ function layer()
 	// forget.href="register.html";
 
 
-	load.appendChild(word);
-	load.appendChild(oul);
+	layer.appendChild(word);
+	layer.appendChild(oul);
 	oul.appendChild(li1);
 	oul.appendChild(li2);
 	li1.appendChild(res);
@@ -47,15 +47,15 @@ function layer()
 	form.appendChild(userName);
 	form.appendChild(password);
 	form.appendChild(login);
-	load.appendChild(form);
+	layer.appendChild(form);
 
 	document.body.appendChild(bg);
-	document.body.appendChild(load);
+	document.body.appendChild(layer);
 
 	bg.onclick=function()
 	{
 		document.body.removeChild(bg);
-		document.body.removeChild(load);
+		document.body.removeChild(layer);
 	}
 
 	li2.onclick=function()
@@ -63,9 +63,9 @@ function layer()
 		var title=document.createElement("h2");
 		var a=document.createElement("a");
 		var img=document.createElement("img");
-		load.removeChild(word);
-		load.removeChild(form);
-		load.removeChild(oul);
+		layer.removeChild(word);
+		layer.removeChild(form);
+		layer.removeChild(oul);
 
 		title.innerHTML="啊你忘记了啊，我也没办法呢！";
 		title.id="title";
@@ -73,9 +73,15 @@ function layer()
 		a.id="go";
 		a.href="register.html";
 		img.src="../image/see.jpg";
-		load.appendChild(img);
-		load.appendChild(title);
-		load.appendChild(a);
+		layer.appendChild(img);
+		layer.appendChild(title);
+		layer.appendChild(a);
+	}
+	var obutton=document.getElementById("layer").getElementsByTagName("input")[2];
+	obutton.onclick=function()
+	{
+	// window.location.href="/web-camp/secondweek/QG训练营-个人主页-谢雯琦/源代码/个人介绍.html";
+	window.location.href="QG训练营-个人主页-谢雯琦/源代码/个人介绍.html";
 	}
 }
 

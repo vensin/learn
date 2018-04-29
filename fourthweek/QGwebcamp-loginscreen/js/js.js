@@ -27,7 +27,7 @@ function layer()
 	password.type="password";
 	password.name="password";
 	password.placeholder="密码";
-	login.type="submit";
+	login.type="button";
 	login.value="登录";
 	login.id="login";
 	res.innerHTML="注册";
@@ -76,6 +76,11 @@ function layer()
 		load.appendChild(img);
 		load.appendChild(title);
 		load.appendChild(a);
+	}
+	var obutton=document.getElementById("load").getElementsByTagName("input")[2];
+	obutton.onclick=function()
+	{
+	window.location.href="../../../secondweek/QG训练营-个人主页-谢雯琦/源代码/个人介绍.html";
 	}
 }
 
